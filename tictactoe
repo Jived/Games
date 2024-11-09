@@ -1,0 +1,96 @@
+#include<stdio.h>
+#include<conio.h>
+#include<time.h>
+#include<stdlib.h>
+
+void printboard();
+int checkwin();
+
+int num[]={'0','1','2','3','4','5','6','7','8','9'};
+
+void main()
+{
+	clrscr();
+	int player=1,input,status=-1;
+       //	srand(time(0));
+	printboard();
+
+	while(status==-1)
+	{
+		player=(player % 2 == 0) ? 2 : 1;
+		char mark=(player==1) ? 'X' : 'O';
+		printf("\nenter your input : ");
+		scanf("%d" , &input);
+		if(input<1 || input>9)
+		{
+			printf("INVALID");
+		}
+
+	       /*	do
+		{
+			input = rand() % 9 + 1;
+		}
+		while(num[input] == 'X' || num[input] == 'Y');*/
+
+		num[input]=mark;
+		printboard();
+
+		player++;
+
+		int win=checkwin();
+		if(win==1)
+		{
+			printf("winner");
+			break;
+		}
+	}
+
+	getch();
+}
+
+void printboard()
+{
+	printf("\n %c | %c | %c \n" , num[1],num[2],num[3]);
+	printf("-----------\n");
+	printf(" %c | %c | %c \n" , num[4],num[5],num[6]);
+	printf("-----------\n");
+	printf(" %c | %c | %c \n" , num[7],num[8],num[9]);
+}
+
+int checkwin()
+{
+	if(num[1]==num[2] && num[2]==num[3])
+	{
+		return 1;
+	}
+	if(num[4]==num[5] && num[5]==num[6])
+	{
+		return 1;
+	}
+	if(num[7]==num[8] && num[8]==num[9])
+	{
+		return 1;
+	}
+	if(num[1]==num[4] && num[4]==num[7])
+	{
+		return 1;
+	}
+	if(num[2]==num[5] && num[5]==num[8])
+	{
+		return 1;
+	}
+	if(num[3]==num[6] && num[6]==num[9])
+	{
+		return 1;
+	}
+	if(num[1]==num[5] && num[5]==num[9])
+	{
+		return 1;
+	}
+	if(num[3]==num[5] && num[5]==num[7])
+	{
+		return 1;
+	}
+
+	return -1;
+}
