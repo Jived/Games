@@ -1,7 +1,5 @@
 #include<stdio.h>
 #include<conio.h>
-#include<time.h>
-#include<stdlib.h>
 
 void printboard();
 int checkwin();
@@ -12,8 +10,7 @@ void main()
 {
 	clrscr();
 	int player=1,input,status=-1;
-       //	srand(time(0));
-	printboard();
+ 	printboard();
 
 	while(status==-1)
 	{
@@ -25,12 +22,6 @@ void main()
 		{
 			printf("INVALID");
 		}
-
-	       /*	do
-		{
-			input = rand() % 9 + 1;
-		}
-		while(num[input] == 'X' || num[input] == 'Y');*/
 
 		num[input]=mark;
 		printboard();
